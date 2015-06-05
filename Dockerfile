@@ -18,6 +18,9 @@ RUN sed -ri ' \
         s/^(rpc_address:).*/\1 0.0.0.0/; \
     ' "$CASSANDRA_CONFIG/cassandra.yaml"
 
+COPY data /data
+COPY load-data.sh /load-data.sh
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
